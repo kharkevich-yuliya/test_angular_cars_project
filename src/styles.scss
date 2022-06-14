@@ -5,6 +5,10 @@
 
 * {
   font-family: "Inter", "Courier New";
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .form-label > .label-asterisk {
@@ -17,4 +21,14 @@
 
 .modal-footer {
   border-top: initial;
+}
+
+.btn {
+  font-weight: 700;
+  width: 100px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,22 +1,21 @@
-<nav class="navbar bg-light"><h4 class="mx-2">Cars Project</h4></nav>
-<main class="d-flex justify-content-center">
+<nav class="navbar"><h4 class="m-0">Cars Project</h4></nav>
+<main class="d-flex justify-content-center main__content">
   <section class="container-xl">
-    <h1>Cars List</h1>
-    <hr />
+    <h1 class="list__heading">Cars List</h1>
+    <hr class="list__hr" />
     <div>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between align-items-start gap-2">
         <input
           type="search"
-          class="form-control"
+          class="form-control cars__search"
           placeholder="Search..."
-          style="max-width: 420px"
           #search
           (keyup)="searchCars(search.value)"
         />
 
         <button
           type="button"
-          class="btn btn-success"
+          class="btn btn-success add__button"
           (click)="openAddCarModal()"
         >
           Add

@@ -2,7 +2,40 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 350px);
   justify-content: space-evenly;
-  //   grid-auto-columns: auto;
   grid-auto-rows: auto;
   grid-gap: 30px;
+}
+
+.main__content {
+  padding: 32px 0;
+}
+
+.navbar {
+  background-color: #052c65;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 18px 0px 18px 65px;
+}
+
+.list__heading {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.list__hr {
+  margin-bottom: 51px;
+}
+
+.cars__search {
+  margin-bottom: 51px;
+  max-width: 420px;
+}
+
+.add__button {
+  background: #28a745;
 }
