@@ -1,6 +1,8 @@
 .car-container {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(auto-fit, 350px);
+  justify-content: space-evenly;
+  //   grid-auto-columns: auto;
   grid-auto-rows: auto;
   grid-gap: 30px;
 }

@@ -4,6 +4,7 @@
     type="button"
     class="btn-close"
     aria-label="Cancel"
+    tabindex="-1"
     (click)="onCancel.emit()"
   ></button>
 </div>
@@ -11,11 +12,13 @@
   <p>Are you sure you want to delete this car?</p>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="onCancel.emit()">
-    Cancel
-  </button>
+  <div class="d-grid gap-2 d-md-block col-12">
+    <button type="button" class="btn btn-secondary" (click)="onCancel.emit()">
+      Cancel
+    </button>
 
-  <button type="button" class="btn btn-danger" (click)="onDelete.emit()">
-    Delete
-  </button>
+    <button type="button" class="btn btn-danger" (click)="onDelete.emit()">
+      Delete
+    </button>
+  </div>
 </div>

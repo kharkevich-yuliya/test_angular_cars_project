@@ -1,1 +1,80 @@
-<p>add-car-modal-content works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Add new car</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Cancel"
+    tabindex="-1"
+    (click)="onCancel.emit()"
+  ></button>
+</div>
+<div class="modal-body">
+  <form
+    #addCarForm="ngForm"
+    class="d-flex flex-column"
+    (ngSubmit)="handleSubmit(addCarForm)"
+  >
+    <label class="form-label"
+      >Name
+      <span class="label-asterisk">*</span>
+      <input class="form-control" required name="name" type="text" ngModel />
+    </label>
+
+    <label class="form-label"
+      >Model
+      <span class="label-asterisk">*</span>
+      <select name="modelId" class="form-select" required ngModel>
+        <option value="" selected disabled hidden>Select Model</option>
+        <option *ngFor="let model of models" [value]="model.id">
+          {{ model.name }}
+        </option>
+      </select>
+    </label>
+
+    <label class="form-label"
+      >Color
+      <span class="label-asterisk">*</span>
+      <input class="form-control" required name="color" type="text" ngModel />
+    </label>
+
+    <label class="form-label"
+      >Year
+      <span class="label-asterisk">*</span>
+      <input
+        class="form-control"
+        required
+        name="year"
+        type="number"
+        min="0"
+        ngModel
+      />
+    </label>
+
+    <label class="form-label"
+      >Image
+      <span class="label-asterisk">*</span>
+      <input
+        class="form-control"
+        required
+        name="image"
+        type="file"
+        accept=".jpg,.jpeg,.png,.gif"
+        placeholder="Choose image"
+        ngModel
+        (change)="changeImage($event)"
+      />
+    </label>
+
+    <div class="modal-footer">
+      <div class="d-grid gap-2 d-md-block col-12">
+        <button
+          type="submit"
+          [disabled]="!addCarForm.valid"
+          class="btn btn-primary"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

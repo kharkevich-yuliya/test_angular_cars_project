@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TCar, TCarModel } from 'src/types';
-import { object } from 'underscore';
 
 @Component({
   selector: 'app-update-car-modal-content',
@@ -33,7 +32,6 @@ export class UpdateCarModalContentComponent {
     if (!this.image) return;
     formData.set('image', this.image, this.image.name);
 
-    console.log(formData);
     this.onSubmit.emit(formData);
   }
 }

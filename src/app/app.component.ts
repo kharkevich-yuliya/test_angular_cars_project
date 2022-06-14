@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SERVER_URL } from 'src/config';
 import { TCar, TCarModel, TCarWithoutID } from 'src/types';
 import { debounce } from 'underscore';
+import { AddCarModalContentComponent } from './add-car-modal-content/add-car-modal-content.component';
 import { DeleteCarModalContentComponent } from './delete-car-modal-content/delete-car-modal-content.component';
 import { UpdateCarModalContentComponent } from './update-car-modal-content/update-car-modal-content.component';
 
@@ -47,16 +48,33 @@ export class AppComponent implements OnInit {
 
   searchCars = debounce((searchText: string) => this.getCars(searchText), 400);
 
-  openAddCarModal() {}
+  openAddCarModal() {
+    const modal = this.modalService.open(AddCarModalContentComponent, {
+      modalDialogClass: 'modal-fullscreen-md-down',
+    });
+    modal.componentInstance.models = this.models;
 
-  createCar(car: TCarWithoutID) {
-    this.httpClient.post<TCar>(`${SERVER_URL}/cars`, {}).subscribe((car) => {
-      this.cars = [car, ...this.cars];
+    modal.componentInstance.onSubmit.subscribe((formData: FormData) => {
+      this.createCar(formData);
+      modal.close();
+    });
+    modal.componentInstance.onCancel.subscribe(() => {
+      modal.close();
     });
   }
 
+  createCar(formData: FormData) {
+    this.httpClient
+      .post<TCar>(`${SERVER_URL}/cars`, formData)
+      .subscribe((car) => {
+        this.cars = this.cars.concat(car);
+      });
+  }
+
   openUpdateCarModal(car: TCar) {
-    const modal = this.modalService.open(UpdateCarModalContentComponent);
+    const modal = this.modalService.open(UpdateCarModalContentComponent, {
+      modalDialogClass: 'modal-fullscreen-md-down',
+    });
     modal.componentInstance.car = car;
     modal.componentInstance.models = this.models;
 
@@ -80,7 +98,9 @@ export class AppComponent implements OnInit {
   }
 
   openDeleteCarModal(car: TCar) {
-    const modal = this.modalService.open(DeleteCarModalContentComponent);
+    const modal = this.modalService.open(DeleteCarModalContentComponent, {
+      modalDialogClass: 'modal-fullscreen-md-down',
+    });
     modal.componentInstance.car = car;
     modal.componentInstance.onDelete.subscribe(() => {
       this.deleteCar(car.id);

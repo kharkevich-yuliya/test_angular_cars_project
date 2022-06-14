@@ -1,10 +1,10 @@
 <div class="modal-header">
   <h4 class="modal-title">Update {{ car!.name }}</h4>
   <button
-    tabindex="-1"
     type="button"
     class="btn-close"
     aria-label="Cancel"
+    tabindex="-1"
     (click)="onCancel.emit()"
   ></button>
 </div>
@@ -63,7 +63,8 @@
         class="form-control"
         required
         name="year"
-        type="text"
+        type="number"
+        min="0"
         [(ngModel)]="car!.year"
       />
     </label>
@@ -84,13 +85,15 @@
     </label>
 
     <div class="modal-footer">
-      <button
-        type="submit"
-        [disabled]="!updateCarForm.valid"
-        class="btn btn-primary"
-      >
-        Save
-      </button>
+      <div class="d-grid gap-2 d-md-block col-12">
+        <button
+          type="submit"
+          [disabled]="!updateCarForm.valid"
+          class="btn btn-primary"
+        >
+          Save
+        </button>
+      </div>
     </div>
   </form>
 </div>
