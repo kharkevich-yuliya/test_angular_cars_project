@@ -1,0 +1,96 @@
+<div class="modal-header">
+  <h4 class="modal-title">Update {{ car!.name }}</h4>
+  <button
+    tabindex="-1"
+    type="button"
+    class="btn-close"
+    aria-label="Cancel"
+    (click)="onCancel.emit()"
+  ></button>
+</div>
+<div class="modal-body">
+  <form
+    #updateCarForm="ngForm"
+    class="d-flex flex-column"
+    (ngSubmit)="handleSubmit(updateCarForm)"
+  >
+    <input required name="id" type="hidden" [(ngModel)]="car!.id" />
+
+    <label class="form-label"
+      >Name
+      <span class="label-asterisk">*</span>
+      <input
+        class="form-control"
+        required
+        name="name"
+        type="text"
+        [(ngModel)]="car!.name"
+      />
+    </label>
+
+    <label class="form-label"
+      >Model
+      <span class="label-asterisk">*</span>
+      <select
+        name="modelId"
+        class="form-select"
+        required
+        [(ngModel)]="car!.model.id"
+      >
+        <option value="" selected disabled hidden>Select Model</option>
+        <option *ngFor="let model of models" [value]="model.id">
+          {{ model.name }}
+        </option>
+      </select>
+    </label>
+
+    <label class="form-label"
+      >Color
+      <span class="label-asterisk">*</span>
+      <input
+        class="form-control"
+        required
+        name="color"
+        type="text"
+        [(ngModel)]="car!.color"
+      />
+    </label>
+
+    <label class="form-label"
+      >Year
+      <span class="label-asterisk">*</span>
+      <input
+        class="form-control"
+        required
+        name="year"
+        type="text"
+        [(ngModel)]="car!.year"
+      />
+    </label>
+
+    <label class="form-label"
+      >Image
+      <span class="label-asterisk">*</span>
+      <input
+        class="form-control"
+        required
+        name="image"
+        type="file"
+        accept=".jpg,.jpeg,.png,.gif"
+        placeholder="Choose image"
+        ngModel
+        (change)="changeImage($event)"
+      />
+    </label>
+
+    <div class="modal-footer">
+      <button
+        type="submit"
+        [disabled]="!updateCarForm.valid"
+        class="btn btn-primary"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

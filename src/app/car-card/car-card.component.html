@@ -1,0 +1,24 @@
+<div class="card">
+  <img
+    [src]="SERVER_URL + '/images/' + car!.image"
+    class="card-img-top"
+    [alt]="car!.name"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ car!.name }}</h5>
+    <ul>
+      <li><span class="text-secondary">Model: </span>{{ car!.model.name }}</li>
+      <li><span class="text-secondary">Color: </span>{{ car!.color }}</li>
+      <li><span class="text-secondary">Year: </span>{{ car!.year }}</li>
+    </ul>
+
+    <div class="d-flex flex-row">
+      <button (click)="onUpdate.emit(car)" class="btn btn-secondary">
+        Update
+      </button>
+      <button (click)="onDelete.emit(car)" class="btn btn-danger">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

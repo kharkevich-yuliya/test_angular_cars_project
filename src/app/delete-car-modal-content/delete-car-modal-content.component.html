@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title">Delete {{ car!.model.name }}</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Cancel"
+    (click)="onCancel.emit()"
+  ></button>
+</div>
+<div class="modal-body">
+  <p>Are you sure you want to delete this car?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="onCancel.emit()">
+    Cancel
+  </button>
+
+  <button type="button" class="btn btn-danger" (click)="onDelete.emit()">
+    Delete
+  </button>
+</div>

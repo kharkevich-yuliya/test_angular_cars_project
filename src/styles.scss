@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+* {
+  font-family: "Inter", "Courier New";
+}
+
+.form-label > .label-asterisk {
+  color: red;
+}
+
+.modal-header {
+  border-bottom: initial;
+}
+
+.modal-footer {
+  border-top: initial;
+}

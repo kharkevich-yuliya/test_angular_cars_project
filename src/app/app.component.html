@@ -1,0 +1,30 @@
+<nav class="navbar bg-light"><h4 class="mx-2">Cars Project</h4></nav>
+<main class="d-flex justify-content-center">
+  <section class="container-xl">
+    <h1>Cars List</h1>
+    <hr />
+    <div>
+      <div class="d-flex justify-content-between">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Search..."
+          style="max-width: 420px"
+          #search
+          (keyup)="searchCars(search.value)"
+        />
+
+        <button type="button" class="btn btn-success">Add</button>
+      </div>
+
+      <div class="car-container">
+        <app-car-card
+          *ngFor="let car of cars"
+          [car]="car"
+          (onUpdate)="openUpdateCarModal(car)"
+          (onDelete)="openDeleteCarModal($event)"
+        ></app-car-card>
+      </div>
+    </div>
+  </section>
+</main>

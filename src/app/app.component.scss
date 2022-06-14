@@ -1,0 +1,6 @@
+.car-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-auto-rows: auto;
+  grid-gap: 30px;
+}
