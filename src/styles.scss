@@ -3,6 +3,8 @@
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
+$--color-primary: #052c65;
+
 * {
   font-family: "Inter", "Courier New";
   list-style: none;
@@ -31,6 +33,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.btn-primary:not(:disabled) {
+    background: $--color-primary;
+  }
 }
 
 .form-label > input {
